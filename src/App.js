@@ -1,3 +1,4 @@
+import { GoBell, GoCodespaces, GoDatabase } from 'react-icons/go';
 import Button from './Button';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
 					outline
 					rounded
 				>
+					<GoBell />
 					Click me!!
 				</Button>
 			</div>
@@ -17,11 +19,15 @@ function App() {
 					danger
 					outline
 				>
+					<GoCodespaces />
 					Buy Now!
 				</Button>
 			</div>
 			<div>
-				<Button warning>See Deal!</Button>
+				<Button warning>
+					<GoDatabase />
+					See Deal!
+				</Button>
 			</div>
 			<div>
 				<Button

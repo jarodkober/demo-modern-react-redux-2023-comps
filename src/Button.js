@@ -2,7 +2,7 @@ import className from 'classnames';
 import PropTypes from 'prop-types';
 
 function Button({ children, primary, secondary, success, warning, danger, outline, rounded }) {
-	const classes = className('border px-3 py-1.5', {
+	const classes = className('border px-3 py-1.5 flex items-center', {
 		'border-blue-500 bg-blue-500': primary,
 		'border-gray-900 bg-gray-900': secondary,
 		'border-green-500 bg-green-500': success,
