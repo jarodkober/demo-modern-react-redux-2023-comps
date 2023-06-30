@@ -29,7 +29,7 @@ Button.propTypes = {
 	outline: PropTypes.bool,
 	rounded: PropTypes.bool,
 
-	checkVariationValue: (primary, secondary, success, warning, danger) => {
+	checkVariationValue: ({ primary, secondary, success, warning, danger }) => {
 		const count =
 			Number(!!primary) + Number(!!secondary) + Number(!!success) + Number(!!warning) + Number(!!danger);
 
