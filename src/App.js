@@ -6,9 +6,10 @@ function App() {
 		<div>
 			<div>
 				<Button
-					success
+					secondary
 					outline
 					rounded
+					className="mb-5"
 				>
 					<GoBell />
 					Click me!!
