@@ -1,7 +1,17 @@
 import className from 'classnames';
 import PropTypes from 'prop-types';
 
-function Button({ children, primary, secondary, success, warning, danger, outline, rounded }) {
+function Button({
+	children,
+	primary,
+	secondary,
+	success,
+	warning,
+	danger,
+	outline,
+	rounded,
+	...rest
+}) {
 	const classes = className('border px-3 py-1.5 flex items-center', {
 		'border-blue-500 bg-blue-500': primary,
 		'border-gray-900 bg-gray-900': secondary,
@@ -17,7 +27,14 @@ function Button({ children, primary, secondary, success, warning, danger, outlin
 		'text-yellow-400': outline && warning,
 		'text-red-500': outline && danger
 	});
-	return <button className={classes}>{children}</button>;
+	return (
+		<button
+			{...rest}
+			className={classes}
+		>
+			{children}
+		</button>
+	);
 }
 
 Button.propTypes = {
@@ -31,10 +48,16 @@ Button.propTypes = {
 
 	checkVariationValue: ({ primary, secondary, success, warning, danger }) => {
 		const count =
-			Number(!!primary) + Number(!!secondary) + Number(!!success) + Number(!!warning) + Number(!!danger);
+			Number(!!primary) +
+			Number(!!secondary) +
+			Number(!!success) +
+			Number(!!warning) +
+			Number(!!danger);
 
 		if (count > 1) {
-			return new Error('Invalid props passed to Button component: There can only be a single variant.');
+			return new Error(
+				'Invalid props passed to Button component: There can only be a single variant.'
+			);
 		}
 	}
 };
