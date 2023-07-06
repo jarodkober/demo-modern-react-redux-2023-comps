@@ -17,11 +17,16 @@ function TablePage() {
 		{ name: 'Lime', color: 'bg-green-500', score: 4 }
 	];
 
+	const keyFn = (fruit) => {
+		return fruit.name;
+	};
+
 	return (
 		<div>
 			<Table
 				config={config}
 				data={data}
+				keyFn={keyFn}
 			/>
 		</div>
 	);
