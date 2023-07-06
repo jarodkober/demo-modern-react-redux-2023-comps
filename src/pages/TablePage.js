@@ -1,7 +1,14 @@
 import Table from '../components/Table';
 
 function TablePage() {
-	const config = [{ label: 'Name' }, { label: 'Color' }, { label: 'Score' }];
+	const config = [
+		{ label: 'Name', render: (fruit) => fruit.name },
+		{
+			label: 'Color',
+			render: (fruit) => <div className={`p-3 m-2 ${fruit.color}`}></div>
+		},
+		{ label: 'Score', render: (fruit) => fruit.score }
+	];
 
 	const data = [
 		{ name: 'Orange', color: 'bg-orange-500', score: 5 },
