@@ -1,6 +1,8 @@
 import Table from '../components/Table';
 
 function TablePage() {
+	const config = [{ label: 'Name' }, { label: 'Color' }, { label: 'Score' }];
+
 	const data = [
 		{ name: 'Orange', color: 'bg-orange-500', score: 5 },
 		{ name: 'Apple', color: 'bg-red-500', score: 3 },
@@ -10,7 +12,10 @@ function TablePage() {
 
 	return (
 		<div>
-			<Table data={data} />
+			<Table
+				config={config}
+				data={data}
+			/>
 		</div>
 	);
 }
