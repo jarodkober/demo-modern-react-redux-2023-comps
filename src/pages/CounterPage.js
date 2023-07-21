@@ -1,3 +1,4 @@
+import { produce } from 'immer';
 import { useReducer } from 'react';
 import Button from '../components/Button';
 import Panel from '../components/Panel';
@@ -10,33 +11,25 @@ const SET_VALUE_TO_ADD = 'set_value_to_add';
 const reducer = (state, action) => {
 	switch (action.type) {
 		case ADD_VALUE_TO_COUNT:
-			return {
-				...state,
-				count: state.count + state.valueToAdd,
-				valueToAdd: 0
-			};
+			state.count = state.count + state.valueToAdd;
+			state.valueToAdd = 0;
+			return;
 		case DECREMENT_COUNT:
-			return {
-				...state,
-				count: state.count - 1
-			};
+			state.count = state.count - 1;
+			return;
 		case INCREMENT_COUNT:
-			return {
-				...state,
-				count: state.count + 1
-			};
+			state.count = state.count + 1;
+			return;
 		case SET_VALUE_TO_ADD:
-			return {
-				...state,
-				valueToAdd: action.payload
-			};
+			state.valueToAdd = action.payload;
+			return;
 		default:
 			throw new Error('Unexpected action type: ' + action.type);
 	}
 };
 
 function CounterPage({ initialCount }) {
-	const [state, dispatch] = useReducer(reducer, {
+	const [state, dispatch] = useReducer(produce(reducer), {
 		count: initialCount,
 		valueToAdd: 0
 	});
@@ -55,7 +48,6 @@ function CounterPage({ initialCount }) {
 
 	const handleChange = (event) => {
 		const value = parseInt(event.target.value) || 0;
-		console.log(value);
 
 		dispatch({
 			type: SET_VALUE_TO_ADD,
